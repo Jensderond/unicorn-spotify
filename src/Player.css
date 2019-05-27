@@ -3,10 +3,14 @@
 .now-playing__name {
     font-size: 1.5em;
     margin-bottom: 0.2em;
+    font-family: 'Gloria Hallelujah', cursive;
+    color: #a03f83;
 }
 
 .now-playing__artist {
     margin-bottom: 1em;
+    font-family: 'Gloria Hallelujah', cursive;
+    color: #a03f83;
 }
 
 .now-playing__status {
@@ -28,6 +32,10 @@
 .now-playing__side {
     margin-left: 5%;
     width: 45%;
+    font-family: 'Gloria Hallelujah', cursive;
+    color: white;
+    font-size: 2rem;
+
 }
 
 /** Progress **/

@@ -10,6 +10,9 @@
 
 .App-header {
   min-height: 100vh;
+  background-image: url('./sailor-night.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -42,9 +45,8 @@ html, body {
 }
 
 body {
-  background: #ddd6f3;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to left, #faaca8, #ddd6f3);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to left, #faaca8, #ddd6f3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background-color: #2f3135;
+
   color: #eee;
   font-family: Helvetica, Arial;
   font-size: 3vmin;
@@ -57,11 +59,14 @@ body {
 /** Buttons **/
 
 .btn {
-  background-color: transparent;
+ background-color: white;
+  
   border-radius: 2em;
-  border: 0.2em solid #1ecd97;
-  color: #1ecd97;
+  border: 0.2em solid #b36190;
+  color: #a03f83;
   cursor: pointer;
+  font-family: Pacifico;
+  text-decoration: none;
   font-size: 3vmin;
   padding: 0.7em 1.5em;
   text-transform: uppercase;
@@ -69,8 +74,8 @@ body {
 }
 
 .btn:hover {
-  background: #1ecd97;
-  color: #333;
+  background: #b36190;
+  color: #ffffff;
 }
 
 .btn--login {
@@ -110,4 +115,9 @@ body {
 
 .main-container {
   flex: 1;
+}
+
+h1 {
+  font-family: 'Pacifico', cursive;
+  color: white;
 }

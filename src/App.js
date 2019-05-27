@@ -3,7 +3,6 @@ import * as $ from "jquery";
 import { authEndpoint, clientId, redirectUri, scopes } from "./config";
 import hash from "./hash";
 import Player from "./Player";
-import logo from "./logo.svg";
 import "./App.css";
 
 class App extends Component {
@@ -45,7 +44,7 @@ class App extends Component {
       beforeSend: (xhr) => {
         xhr.setRequestHeader("Authorization", "Bearer " + token);
       },
-      success: (data) => {
+      success: data => {
         console.log("data", data);
         this.setState({
           item: data.item,
@@ -61,7 +60,7 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
+        <h1>Sailor Vibes</h1>
           {!this.state.token && (
             <a
               className="btn btn--loginApp-link"
