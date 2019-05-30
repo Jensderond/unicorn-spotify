@@ -65,15 +65,23 @@ class App extends Component {
     const _progress_ms = this.state.progress_ms;
     const _duration_ms = this.state.item.duration_ms;
     const _token = this.state.token;
-
-    if(_progress_ms !== undefined) {
-      if(_progress_ms < _duration_ms) {
-        this.setState({
-          progress_ms: _progress_ms + 1000,
-        });
+    const _is_playing = this.state.is_playing;
+    
+    if(_token !== null) {
+      if(_is_playing === true) {
+        if(_progress_ms < _duration_ms) {
+          // Song is not done playing, increment the progress with 1 second.
+          this.setState({
+            progress_ms: _progress_ms + 1000,
+          });
+        }
+        else {
+          // Song ended, checking for a new song.
+          this.getCurrentlyPlaying(_token);
+        }
       }
-      if(_progress_ms >= _duration_ms && _token !== null) {
-        console.log('Song ended, checking for a new song.');
+      else {
+        // Song received was paused, checking the status again.
         this.getCurrentlyPlaying(_token);
       }
     }
