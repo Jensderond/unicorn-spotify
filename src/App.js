@@ -38,6 +38,10 @@ class App extends Component {
     this.interval = setInterval(() => this.updateProgress(), 1000);
   }
 
+  componentWillUnmount() {
+    clearInterval(this.interval);
+  }
+
   getCurrentlyPlaying(token) {
     // Make a call using the token
     $.ajax({
