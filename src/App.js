@@ -75,7 +75,7 @@ class App extends Component {
             <Player
               item={this.state.item}
               is_playing={this.state.is_playing}
-              progress_ms={this.progress_ms}
+              progress_ms={this.state.progress_ms}
             />
           )}
         </header>
