@@ -22,6 +22,7 @@ class App extends Component {
       progress_ms: 0
     };
     this.getCurrentlyPlaying = this.getCurrentlyPlaying.bind(this);
+    this.updateProgress = this.updateProgress.bind(this);
   }
   componentDidMount() {
     // Set token
@@ -34,6 +35,7 @@ class App extends Component {
       });
       this.getCurrentlyPlaying(_token);
     }
+    this.interval = setInterval(() => this.updateProgress(), 1000);
   }
 
   getCurrentlyPlaying(token) {
@@ -53,6 +55,20 @@ class App extends Component {
         });
       }
     });
+  }
+
+  updateProgress() {
+    if(this.state.progress_ms !== undefined) {
+      if(this.state.progress_ms < this.state.item.duration_ms) {
+        this.setState({
+          progress_ms: this.state.progress_ms + 1000,
+        });
+      }
+      if(this.state.progress_ms >= this.state.item.duration_ms && this.state.token !== null) {
+        console.log('Song ended, checking for a new song.');
+        this.getCurrentlyPlaying(this.state.token);
+      }
+    }
   }
 
   render() {
