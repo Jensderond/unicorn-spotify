@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import * as $ from "jquery";
 import { authEndpoint, clientId, redirectUri, scopes } from "./config";
 import hash from "./hash";
 import Player from "./Player";
@@ -37,22 +36,20 @@ class App extends Component {
   }
 
   getCurrentlyPlaying(token) {
-    // Make a call using the token
-    $.ajax({
-      url: "https://api.spotify.com/v1/me/player",
-      type: "GET",
-      beforeSend: (xhr) => {
-        xhr.setRequestHeader("Authorization", "Bearer " + token);
-      },
-      success: data => {
+    const headers = {
+      "Content-Type": "application/json",
+      "Authorization": "Bearer " + token 
+    }
+    fetch("https://api.spotify.com/v1/me/player", { headers } )
+      .then(response => response.json())
+      .then((data) => {
         console.log("data", data);
         this.setState({
           item: data.item,
           is_playing: data.is_playing,
           progress_ms: data.progress_ms,
         });
-      }
-    });
+      });
   }
 
   render() {
