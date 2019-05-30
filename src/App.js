@@ -62,15 +62,19 @@ class App extends Component {
   }
 
   updateProgress() {
-    if(this.state.progress_ms !== undefined) {
-      if(this.state.progress_ms < this.state.item.duration_ms) {
+    const _progress_ms = this.state.progress_ms;
+    const _duration_ms = this.state.item.duration_ms;
+    const _token = this.state.token;
+
+    if(_progress_ms !== undefined) {
+      if(_progress_ms < _duration_ms) {
         this.setState({
-          progress_ms: this.state.progress_ms + 1000,
+          progress_ms: _progress_ms + 1000,
         });
       }
-      if(this.state.progress_ms >= this.state.item.duration_ms && this.state.token !== null) {
+      if(_progress_ms >= _duration_ms && _token !== null) {
         console.log('Song ended, checking for a new song.');
-        this.getCurrentlyPlaying(this.state.token);
+        this.getCurrentlyPlaying(_token);
       }
     }
   }
